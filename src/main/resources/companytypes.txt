@@ -1,0 +1,50 @@
+Structural Engineering and Architecture,designs buildings and offers a variety of analysis services for existing and proposed structures,Engineers,Architects
+Financial Services,manages personal and business investments on behalf of local clients,Analysts,Market Managers
+Furniture Manufacturing,builds high-quality hand-crafted home furnishings and decor items,Designers,Millwrights
+Pump Manufacturing,builds pumps for commercially used liquids and gasses,Engineers,Technicians
+Transformer Design and Manufacturing,works with clients to create unique purpose-built electrical transformers,Engineers,Trades
+Nuclear Engineering,provides design and support for nuclear power generation stations,Nuclear Physics Specialists,Nuclear Engineers
+Plumbing Parts Supply,specializes in regional warehousing and logistical support for the plumbing industry,Inventory Managers,Operations Staff
+Car and Truck Parts Supply,specializes in warehousing and logistical support for garages and repair shops,Inventory Managers,Operations Staff
+Commercial Real Estate,helps buy/sell or lease business and commercial properties across the province of Ontario,Leasing Agents,Property Managers
+Fashions,operates a chain of high-fashion clothing stores,Buyers,Store Inventory Managers
+Groceries,operates a large chain of local grocery stores,Fresh Food Managers,Hard Goods Managers
+Restaurant Operations,provides oversight and management of a small group of chain restaurants,Supplier Managers,Store and Property Managers
+Temporary Staffing,maintains a pool of skilled workers that take on short-term work assignments at client businesses,Talent Managers,Worker Pool
+Automotive,is a province-wide chain of used car dealers,Car Buyers,Dealership and Delivery Managers
+Windows and Doors,builds and installs replacement windows and doors for residential and business customers,Account Managers,Installers
+Martial Arts,operates studios in a variety of retail locations that teach self-defence classes to children and adults,Studio Managers,Instructors and Support Staff
+Bakery,produces more thatn 60 varieties of breads and buns for the grocery store and restaurant market,Maintenance Staff,Bakery Workers
+Trucking and Transport,operates an array of large and small capacity trucks and vans that transport products across Canada,Safety and Compliance Officers,Logistics Managers
+Uniforms,sells locally manufactured school uniforms,Supply Chain Managers,Garment Designers
+Events,plans and runs large corporate events such as conferences and special celebrations,Event Planners,Event Staff
+Waste Management,performs cost-effective and eco-friendly collection and disposal of commercial and industrial waste,Sanatation Engineers,Chemists
+Recyclers,quickly and safely processes recyclable waste into new raw material feedstock for the textile and packaging industries,Chemists,Environmental Monitoring Staff
+Safety Equipment,supplies safety equipment to local construction and building maintenance companies,Buyers,Product Managers
+Wine and Spirits,imports and resells wines and spirits to restaurants and collectors,Product Managers,Buyers
+Custom Speakers,engineers and manufactures custom loudspeakers for musicians and audio enthusiasts,Speaker Designers,Builders
+Online Car Audio,operates a large online store which sells high-end custom audio systems and related components for the automotive market,Customer Support Agents,Shippers
+Wine and Hop Shop,sells kits and general winemaking and beermaking supplies to hobby brewers,Buyers,Testers
+Municipal Bike Sharing Support Shop,sells and services bicycles and related products to cities and towns that operate bike sharing services,Bike Technicians,Customer Support Agents
+Pet Grooming,operates a large chain of stores that specialize in grooming household pets,Franchise Support Agents,Product Supply Agents
+Cupcakes,runs a national chain of stores that sell cupcakes and other small baked goods,Franchise Support Agentsa,Baking Supplies Logistics Officers
+Regional Couriers,a large company that specializes in large package delivery to remote regions in Ontario and Quebec,Logistics Officers,Fleet Maintenance Officers
+Vending Machines,supplies and services a large variety of coin-operated and electronic snack and drink vending machines,Customer Service Representatives,Delivery and Service Coordinators
+Movers,a home and business moving company that helps clients to relocate to towns and cities across Canada,Booking Agents,Logistics Agents
+Carpet Cleaners,runs a chain of local carpet cleaning stores that serves both residential and business clients,Booking Agents,Franchise Support Agents
+Kickboxing Studios,a kickboxing-themed fitness franchise servicing clients that want fun and convenient workouts near their homes and workplaces,Training Coordinators,Health and Safety Officers
+Painting,runs a call and coordination centre which dispatches local painters for residential and commercial painting jobs,Customer Service Representatives,Job Dispatch Agents
+Small Business Support,runs support services across the country for people running small businesses from establishing a reliable supply chain and ensuring taxes are properly handled to training on hiring practices and retail strategies,Service Coordinators,Support Agents
+Music Schools,runs a province-wide chain of music instruction schools providing individual lessons taught by working musicians as well as practice and performance spaces,Franchise Support Agents,Instrument Maintenence Coordinators
+Storefront Signs,a leading design and installation firm specializing in signs for retail and commercial business locations across Ontario,Designers,Installation Coodinators
+Furniture Refinishers,runs a chain of local furniture repair and refinishing stores across Canada that supplies training and materials to their store operators and staff,Store Support Agents,Product Supply Agents
+Safety Inspectors,a nationally-recognized firm specializing in detailed inspection and reporting on workplace compliance with local/Provincial/Federal safety standards,Inspectors,Compliance Analysts
+Remote IT Management,an award-winning team of systems and networking analysts partnered with devops and project management staff that provides cost-effective maintenance and management of IT systems from the Infrastructure to the end-users desktop,Technical Staff,Project Managers
+Doors and Windows,manufactures and installs new and replacement windows and doors for business and residential customers,Design and Manufacturing Staff,Installers
+School of Music,a multi-provincial chain of music instruction schools providing individual lessons taught by working musicians as well as practice and performance spaces,Location Support Staff,Instrument Maintenance Staff
+Storefront Signage,a leading design and manufacturing firm specializing in signs for retail and commercial business locations across Ontario and Quebec,Sign Designers,Manufacturing Staff
+Safety Solutions,is an Ontario-based firm specializing in detailed inspection and reporting on workplace compliance with local/Provincial/Federal safety standards,Inspectors,Compliance Analysts
+Wealth Management,manages personal and business investments on behalf of companies and individual clients,Portfolio Managers,Advisors
+Cars and Trucks,is a chain of new and used car and truck dealers that spans Manitoba and Ontario,Sales Support Agents,Dealership and Delivery Managers
+Custom Car Audio,engineers and installs custom car audio solutions for demanding automotive audio enthusiasts across Canada,Designers,Installers
+Wines from the Vines,sells wine and beer making equipment via online and in-person locations across Canada and offers comprehensisve online and in-person training for those new to the hobby and expereienced vintners and brewers,Product Managers,Instructors
