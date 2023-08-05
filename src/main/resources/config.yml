@@ -1,0 +1,7 @@
+# Allowed types of data: integer, string, boolean
+peoplePerOffice: 1
+overflowMin: 5
+
+meetingRoomsPerFloor: 2 # recommended: 2
+
+executiveOfficesClustered: False

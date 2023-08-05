@@ -14,7 +14,7 @@ Temporary Staffing,maintains a pool of skilled workers that take on short-term w
 Automotive,is a province-wide chain of used car dealers,Car Buyers,Dealership and Delivery Managers
 Windows and Doors,builds and installs replacement windows and doors for residential and business customers,Account Managers,Installers
 Martial Arts,operates studios in a variety of retail locations that teach self-defence classes to children and adults,Studio Managers,Instructors and Support Staff
-Bakery,produces more thatn 60 varieties of breads and buns for the grocery store and restaurant market,Maintenance Staff,Bakery Workers
+Bakery,produces more that 60 varieties of breads and buns for the grocery store and restaurant market,Maintenance Staff,Bakery Workers
 Trucking and Transport,operates an array of large and small capacity trucks and vans that transport products across Canada,Safety and Compliance Officers,Logistics Managers
 Uniforms,sells locally manufactured school uniforms,Supply Chain Managers,Garment Designers
 Events,plans and runs large corporate events such as conferences and special celebrations,Event Planners,Event Staff

@@ -1,0 +1,69 @@
+- Expand the rooms downward to fill any empty space
+- Add bathroom and closets randomly, but they have to be touching a walkway (Ask if we want random or manually added)
+
+- what to do with last floor
+
+
+POSSIBLE:
+- distinguish between stairs and elevators
+- modify envelop to have as many possible layouts as possible
+
+CONFIG
+- Number of people per office (Currently 10) [possibly a range rather then a fixed number]
+- size at which we would consider adding an extra office
+- cluster executive or embed them
+- bathrooms per floor
+- storage rooms per floor
+
+- Create a system for unassigned office space
+
+- for drawing, if rooms are big enough add multiple doors
+
+
+- get files to be workable when compiled (jar)
+- start getting to drawing
+
+###############################################################################
+
+- pre-allocate washrooms and closets (either in file or pre define randomly)
+- add conference rooms first
+- then place all offices
+
+- exterior dimension markings
+- for every office, drop in a picture *
+- add doors to offices (more per room if large enough) *
+
+###############################################################################
+
+- allow for more than 2 envelop styles ***
+
+- Calculating the number of people per connected office
+    - count all conected points and divide by 80
+
+- for adding meeting rooms - DONE
+    - have a 30% chance of adding a meeting room
+    - every failed placement increases the chance by 5-10%
+
+- for visual parts - WIP
+    - add doors (open inwards)
+    - add labels
+
+- when you run out of rooms, add a new type of area for un-used
+
+!!!! BUGS !!!!
+- Last floor placing multiple different types
+    - Most likely an issue with how counter is being handled
+    - adding extra rooms
+
+- rooms getting placed in the center of the floor
+    - try making a check method to see if the room is touching either a walkway or another room of the same type
+
+
+#####
+- for doors:
+    - for each side in contact with a walkway, find center of wall and draw door
+
+- fix orphaned rooms (check if against wall or same roomType)
+
+* elevator: box with X in it
+* stairs: box with steps in it

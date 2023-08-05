@@ -1,7 +1,8 @@
-package tech.lpdev.floor;
+package tech.lpdev.components;
 
 import tech.lpdev.room.Room;
 import tech.lpdev.utils.ConsoleColour;
+import tech.lpdev.utils.Logger;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Floor {
     private final List<Room> rooms;
 
     /**
+     * -11 = unassigned
      * -10 = blocked space
      * -3 = access point
      * -2 walkway
@@ -40,12 +42,20 @@ public class Floor {
     }
 
     public Floor(int[][] layout) {
-        int[][] floor = new int[layout.length][layout[0].length];
-        for (int i = 0; i < layout.length; i++) {
-            for (int j = 0; j < layout[0].length; j++) {
+        int width = layout.length;
+        int height = layout[0].length;
+//        Logger.log("FLOOR --> width: " + width + " Height: " + height);
+
+        int[][] floor = new int[width][height];
+
+//        int[][] floor = new int[width][height];
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 if (layout[i][j] == 1) floor[i][j] = -10;
                 else if (layout[i][j] == 2) floor[i][j] = -3;
                 else if (layout[i][j] == 3) floor[i][j] = -2;
+                else if (layout[i][j] == 4) floor[i][j] = 13;
+                else if (layout[i][j] == 5) floor[i][j] = 12;
                 else floor[i][j] = layout[i][j];
             }
         }
@@ -70,6 +80,16 @@ public class Floor {
                 if (floor[i][j] != 0) return false;
             }
         }
+
+        // check space around it
+//        for (int i = x - 1; i < x + room.getWidth() + 1; i++) {
+//            for (int j = y - 1; j < y + room.getLength() + 1; j++) {
+//                if (i < 0 || j < 0 || i >= floor.length || j >= floor[0].length) continue;
+//                if (i != 3 || i != room.getDepartment().getId() || j != 3 || j != room.getDepartment().getId()) continue;
+//                return true;
+//            }
+//        }
+//        return false;
         return true;
     }
 
@@ -80,6 +100,7 @@ public class Floor {
             for (int i : row) {
                 String color = "";
                 switch (i) {
+                    case -11 -> color = ConsoleColour.custom(new Color(190, 0, 130));
                     case -10 -> color = ConsoleColour.custom(new Color(0, 0, 0));
                     case -3 -> color = ConsoleColour.custom(new Color(173, 49, 77));
                     case -2 -> color = ConsoleColour.custom(new Color(153, 153, 153));
@@ -95,6 +116,8 @@ public class Floor {
                     case 9 -> color = ConsoleColour.custom(new Color(128, 0, 0));
                     case 10 -> color = ConsoleColour.custom(new Color(153, 0, 153));
                     case 11 -> color = ConsoleColour.custom(new Color(102, 0, 204));
+                    case 12 -> color = ConsoleColour.custom(new Color(255, 153, 51));
+                    case 13 -> color = ConsoleColour.custom(new Color(255, 255, 255));
                 }
                 String space = "";
                 if (i > -1 && i < 10) space += " ";

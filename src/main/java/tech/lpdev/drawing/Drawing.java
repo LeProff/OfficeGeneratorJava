@@ -1,2 +1,4 @@
-package tech.lpdev.drawing;public class Drawing {
+package tech.lpdev.drawing;
+
+public class Drawing {
 }

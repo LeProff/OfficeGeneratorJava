@@ -1,4 +1,4 @@
-package tech.lpdev;
+package tech.lpdev.room;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

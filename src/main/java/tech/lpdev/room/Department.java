@@ -1,4 +1,4 @@
-package tech.lpdev;
+package tech.lpdev.room;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public enum Department {
 
+    UN_ASSIGNED(-11),
     NONE(-1),
     EXECUTIVE(1),
     HR(2),
