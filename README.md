@@ -9,8 +9,8 @@
 </div>
 
 ### Stuff You Should Know
-* [Envelope Definition Files] (#envelopes)
-* [How to Run] (#run)
+* [Envelope definition files] (#defining-the-building-envelopes)
+* [How to generate the floorplans] (#how-to-generate-floorplans)
 
 ### Defining the Building Envelopes
 Located within the resources folder, the envelopes folder contains a subfolder
@@ -55,3 +55,6 @@ Example ``inner.txt`` (for a very small building)::
     222223330000000000000000000000
     222223330000000000000000000000
     222223330000000000000000000000
+
+### How to Generate Floorplans
+
