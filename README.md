@@ -2,17 +2,17 @@
 <div align="center">
   <img src="images/ofp.jpg" alt="Awful Logo">
 
-  <h3 align="center">Office Floorplan Generator (Java Edition)</h3>
+  <h2 align="center">Office Floorplan Generator (Java Edition)</h3>
   <p align="center">
-    A floorplan generator for COMP-10019!
+A floorplan generator for COMP-10019!
   </p>
 </div>
 
-### Stuff You Should Know
-* [Envelope definition files] (#defining-the-building-envelopes)
-* [How to generate the floorplans] (#how-to-generate-floorplans)
+## Stuff You Will Need to Know
+* How to define the building envelopes
+* How to run the tool to generate the floorplan and company data
 
-### Defining the Building Envelopes
+## Defining the Building Envelopes
 Located within the resources folder, the envelopes folder contains a subfolder
 for each defined building envelope.  Inside each subfolder are two templates,
 named ``inner.txt`` and ``outer.txt`` that define the basic structure of the
@@ -37,24 +37,26 @@ numbers are as follows:
 * 4 - Washrooms
 * 5 - Closets/utility rooms
 
-Example ``inner.txt`` (for a very small building)::
-    30
-    16
-    000003334444400000000000000000
-    000003334444400000000000000000
-    000003334444400000000000000000
-    000003334444400000000000000000
-    000003330000000000000000000000
-    000003330000000000003333111111
-    000003330000000000003333111111
-    000003333333333333333333111111
-    000003333333333333333333111111
-    000003333333333333333333111111
-    222223330000000000003333111111
-    222223330000000000003333111111
-    222223330000000000000000000000
-    222223330000000000000000000000
-    222223330000000000000000000000
+Example ``inner.txt`` (for a very small building):
+```
+30
+16
+000003334444400000000000000000
+000003334444400000000000000000
+000003334444400000000000000000
+000003334444400000000000000000
+000003330000000000000000000000
+000003330000000000003333111111
+000003330000000000003333111111
+000003333333333333333333111111
+000003333333333333333333111111
+000003333333333333333333111111
+222223330000000000003333111111
+222223330000000000003333111111
+222223330000000000000000000000
+222223330000000000000000000000
+222223330000000000000000000000
+```
 
-### How to Generate Floorplans
+## How to Generate Floorplans
 
