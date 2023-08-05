@@ -2,7 +2,7 @@
 <div align="center">
   <img src="images/ofp.jpg" alt="Awful Logo">
 
-  <h2 align="center">Office Floorplan Generator (Java Edition)</h3>
+  <h2 align="center">Office Floorplan Generator (Java Edition)</h2>
   <p align="center">
 A floorplan generator for COMP-10019!
   </p>
@@ -10,7 +10,7 @@ A floorplan generator for COMP-10019!
 
 ## Stuff You Will Need to Know
 * How to define the building envelopes
-* How to control the generation details via the ``config.yml` file
+* How to control the generation details via the ``config.yml`` file
 * How to run the tool to generate the floorplan and company data
 
 ## Defining the Building Envelopes
