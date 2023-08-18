@@ -15,7 +15,9 @@ public class FileUtils {
     private static final String jarPath = FileUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("OfficeGenerator-1.0-SNAPSHOT.jar", "");
 
     public static File getFileFromResource(String fileName) {
-        File file = new File(jarPath + "OfficeGenerator/" + fileName);
+        File file;
+        if (jarPath.contains("classes")) file = new File(jarPath + fileName);
+        else file = new File(jarPath + "OfficeGenerator/" + fileName);
         return file;
     }
 

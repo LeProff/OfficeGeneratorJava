@@ -67,3 +67,14 @@ CONFIG
 
 * elevator: box with X in it
 * stairs: box with steps in it
+
+###############################################################################
+
+produce workable output
+working doors
+working labels [dept_name + (num_people_in_room)] (people per room) (boardrooms dont need number of people) || DONE
+Word docx in folder DONE
+Get rid of a colours
+try to remove orphaned rooms (add doors if need-be)
+* add symbols for bathrooms and access points
+* add open space rooms (un-used room type)
