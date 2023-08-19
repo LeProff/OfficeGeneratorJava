@@ -14,30 +14,28 @@ A floorplan generator for COMP-10019!
 * How to run the tool to generate the floorplan and company data
 
 ## Defining the Building Envelopes
-Located within the resources folder, the envelopes folder contains a subfolder
-for each defined building envelope.  Inside each subfolder are two templates,
-named ``inner.txt`` and ``outer.txt``, that define the envelope and basic
-layout elements of the building, including key spaces such as stairs/elevators,
-washrooms, etc.
+Located within the ``resources`` folder, the `envelopes` folder contains a 
+subfolder for each defined building envelope.  Inside each subfolder are two
+templates, named ``inner.txt`` and ``outer.txt``, that define the envelope and
+basic layout elements of the building, including key spaces such as stairs/
+elevators, washrooms, etc.
 
 These files must have identital shape definitions, but can have different
-internal structures defined.  I have no idea if they need to have parts in
-common, or which elements are only used by the parser for ``inner.txt`` or
-``outer.txt`` at the moment.
+internal structures defined.  They should have the same contents, but you can
+vary the layout of corridors so that the building floors can show some variety.
 
 The structure of the ``inner.txt`` and ``outer.txt`` files is as follows:
-* line 1: length of building
-* line 2: width of building
-* lines 3 to width+3: _description_ of each 1x1 sqft tile
-
-The _description_ is a number that indicates the use of that tile. Valid usage
-numbers are as follows:
-* 0 - Undefined (open for use as office space or other room types)
-* 1 - Unusable space (this is how irregular buildings shapes are defined)
-* 2 - Stair and elevator space
-* 3 - Corridors/walkways
-* 4 - Washrooms
-* 5 - Closets/utility rooms
+* Line 1: Width of building
+* Line 2: Height of building
+* All following lines: Details of the building layout (design), using a simple
+numeric code to describe the usage of each building **tile** (a 1 square foot
+section of the building):
+    * 0 - Undefined (open for use as office space or other room types)
+    * 1 - Unusable space (this is how irregular buildings shapes are defined)
+    * 2 - Access points (stair and elevator space)
+    * 3 - Corridors/walkways
+    * 4 - Closets/utility rooms
+    * 5 - Washrooms
 
 Example ``inner.txt`` (for a very small building):
 ```
@@ -84,4 +82,17 @@ executiveOfficesClustered: False
 ```
 
 ## How to Generate Floorplans
-
+In the directory containing the `OfficeGenerator-**versionnumber**.jar` file, 
+run the generator as follows:
+```
+java -jar OfficeGenerator-**versionnumber**.jar **numbertogenerate**
+```
+Example:
+```
+java -jar OfficeGenerator-1.0.jar 10
+```
+This will create output in the `companies` directory.  Each generated company
+will be in its own directory that will contain an **svg** file for each floor
+and a file called ``company.txt`` that contains the details requried for the
+case study: the company name and description, as well as the names and sizes of
+each department.
