@@ -12,7 +12,7 @@ public class FileUtils {
 
 
     @Getter
-    private static final String jarPath = FileUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("OfficeGenerator-1.0-SNAPSHOT.jar", "");
+    private static final String jarPath = FileUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("OfficeGenerator-1.0.jar", "");
 
     public static File getFileFromResource(String fileName) {
         File file;

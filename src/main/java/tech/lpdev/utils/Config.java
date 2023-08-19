@@ -48,7 +48,7 @@ public class Config {
     public int getAsInteger(String key) {
         if (values.isEmpty() || !values.containsKey(key)) throw new NoSuchElementException("Option " + key + " not found in " + path);
         try {
-            return Integer.parseInt(String.valueOf(values.get(key)));
+            return Integer.parseInt(String.valueOf(values.get(key)).replaceAll(" ", ""));
         } catch (Exception e) {
             throw e;
         }

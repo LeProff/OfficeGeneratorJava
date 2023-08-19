@@ -119,23 +119,12 @@ public class Company {
         int overflowMin = Main.getConfig().getAsInteger("overflowMin");
 
         int roomCount = num / peoplePerRoom;
-        if (num % 10 > 0) roomCount++;
+        if (num % overflowMin > 0) roomCount++;
         List<Room> rooms = new ArrayList<>();
         for (int i = 0; i < roomCount; i++) {
             rooms.add(new Room(RoomType.OFFICE, dept));
         }
         rooms.add(new Room(RoomType.EXECUTIVE_OFFICE, dept));
-        return rooms;
-    }
-
-    private List<Room> generateMeetingRooms() {
-        List<Room> rooms = new ArrayList<>();
-        for (int i = 0; i < this.totalEmployees / 50; i++) {
-            rooms.add(new Room(RoomType.MEETING_ROOM, Department.NONE));
-        }
-        for (int i = 0; i < this.totalEmployees / 150; i++) {
-            rooms.add(new Room(RoomType.BOARD_ROOM, Department.NONE));
-        }
         return rooms;
     }
 }

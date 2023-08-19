@@ -1,6 +1,7 @@
 package tech.lpdev.components;
 
 import lombok.Getter;
+import tech.lpdev.Main;
 import tech.lpdev.Position;
 import tech.lpdev.envelop.EnvelopManager;
 import tech.lpdev.envelop.Envelope;
@@ -60,6 +61,7 @@ public class Building {
 
     private static int boardRoomsPlaced = 0;
     private static void placeRooms(Floor floor) {
+        int maxBoardRooms = Main.getConfig().getAsInteger("meetingRoomsPerFloor");
 
         double boardRoomChanceMod = 0.0;
         int counter = 0;
@@ -76,7 +78,7 @@ public class Building {
                 room = new Room(RoomType.OFFICE, Department.UN_ASSIGNED);
             }
 
-            if (Math.random() <= 0.1 + boardRoomChanceMod && boardRoomsPlaced < 2) {
+            if (Math.random() <= 0.1 + boardRoomChanceMod && boardRoomsPlaced < maxBoardRooms) {
                 room = new Room(RoomType.BOARD_ROOM, Department.NONE);
                 boardRoomsPlaced++;
                 boardRoomChanceMod += 0.05;
