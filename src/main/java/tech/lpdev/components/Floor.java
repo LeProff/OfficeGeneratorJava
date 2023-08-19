@@ -93,6 +93,22 @@ public class Floor {
         return true;
     }
 
+    public boolean checkNonAloneSpace(Room room, int x, int y) {
+        for (int i = x - 1; i < x + room.getWidth() + 1; i++) {
+            for (int j = y - 1; j < y + room.getLength() + 1; j++) {
+
+                if (i < 0 || j < 0 || i >= floor.length || j >= floor[0].length) continue;
+                if (i >= x && i <= x + room.getWidth() && j >= y && j <= y + room.getLength()) continue;
+                if ((i == x - 1 || i == room.getWidth() + 1) && (j == y - 1 || j == room.getLength() + 1)) continue;
+//                Logger.warning("i: " + i + " - j: " + j);
+//                Logger.warning("Type at (" + i + ", " + j + "): " + floor[i][j]);
+                if (floor[i][j] == -2 || floor[i][j] == room.getDepartment().getId()) return true;
+            }
+        }
+//        Logger.success("No non-alone space found");
+        return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -17,7 +17,6 @@ import java.util.List;
 
 public class Building {
 
-    // TODO: Move main class functionality here and use main class as the batch generation class
     private static List<Room> rooms;
     @Getter
     private static List<Room> usedRooms;
@@ -30,8 +29,7 @@ public class Building {
         floors = new ArrayList<>();
 
         Envelope e = EnvelopManager.getRandomEnvelop();
-        while (rooms.size() != 0) {
-            // TODO: Pick at random either inner or outer
+        while (!rooms.isEmpty()) {
 //            e.display();
             Floor floor = null;
             int choice = MathUtil.random(0, 1);
@@ -43,16 +41,6 @@ public class Building {
 
             floors.add(floor);
         }
-
-        // Draws Floor
-
-//        System.out.println(floors.size());
-//        for (Floor floor : floors) {
-//            System.out.println(floor);
-//            System.out.println("\n\n");
-//        }
-
-        // TODO: make file ouput
     }
 
     private static void fillFloor(Floor floor) {
@@ -65,6 +53,8 @@ public class Building {
         //Stretch the rooms down to fill all spaces
         fillEmptySpace(floor);
         fillEmptySpace(floor);
+
+        fillWithUnassigned(floor);
     }
 
 
@@ -77,22 +67,14 @@ public class Building {
         while (true) {
             Room room = null;
 
-            if (counter >= rooms.size()) {
-                counter = 0;
-                break;
+            if (!rooms.isEmpty()) {
+                if (counter >= rooms.size()) {
+                    counter = 0;
+                }
+                room = rooms.get(counter);
+            } else {
+                room = new Room(RoomType.OFFICE, Department.UN_ASSIGNED);
             }
-
-            room = rooms.get(counter);
-
-//            if (rooms.isEmpty()) {
-//                room = new Room(RoomType.OFFICE, Department.UN_ASSIGNED);
-//            } else {
-//                room = rooms.get(counter);
-//            }
-
-
-
-
 
             if (Math.random() <= 0.1 + boardRoomChanceMod && boardRoomsPlaced < 2) {
                 room = new Room(RoomType.BOARD_ROOM, Department.NONE);
@@ -121,7 +103,7 @@ public class Building {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
                 if (!floor.checkSpace(room, i, j)) continue;
-                if (floor.checkSpace(room, i, j)) return new Position(i, j);
+                if (floor.checkNonAloneSpace(room, i, j)) return new Position(i, j);
             }
         }
         return null;
@@ -129,27 +111,9 @@ public class Building {
 
     private static void fillEmptySpace(Floor floor) {
 
-        for (int i = 0; i < floor.getWidth(); i++) {
-            for (int j = 0; j < floor.getLength(); j++) {
-                if (floor.getSpace(i, j) != 0 || j - 1 < 0) continue;
-                if (floor.getSpace(i, j) == 12 || floor.getSpace(i, j) == 13 || floor.getSpace(i, j) == -1) continue;
-                int spaceLeft = floor.getSpace(i, j - 1);
-                if (spaceLeft >= -1 && spaceLeft <= 11) {
-                    floor.setSpace(i, j, spaceLeft);
-                }
-            }
-        }
 
-        for (int i = 0; i < floor.getWidth(); i++) {
-            for (int j = 0; j < floor.getLength(); j++) {
-                if (floor.getSpace(i, j) != 0 || i - 1 < 0) continue;
-                if (floor.getSpace(i, j) == 12 || floor.getSpace(i, j) == 13 || floor.getSpace(i, j) == -1) continue;
-                int spaceAbove = floor.getSpace(i - 1, j);
-                if (spaceAbove >= -1 && spaceAbove <= 11) {
-                    floor.setSpace(i, j, spaceAbove);
-                }
-            }
-        }
+
+
 
         for (int i = floor.getWidth() - 1; i >= 0; i--) {
             for (int j = floor.getLength() - 1; j >= 0; j--) {
@@ -169,6 +133,42 @@ public class Building {
                 int spaceBelow = floor.getSpace(i + 1, j);
                 if (spaceBelow >= -1 && spaceBelow <= 11) {
                     floor.setSpace(i, j, spaceBelow);
+                }
+            }
+        }
+
+
+
+        for (int i = 0; i < floor.getWidth(); i++) {
+            for (int j = 0; j < floor.getLength(); j++) {
+                if (floor.getSpace(i, j) != 0 || i - 1 < 0) continue;
+                if (floor.getSpace(i, j) == 12 || floor.getSpace(i, j) == 13 || floor.getSpace(i, j) == -1) continue;
+                int spaceAbove = floor.getSpace(i - 1, j);
+                if (spaceAbove >= -1 && spaceAbove <= 11) {
+                    floor.setSpace(i, j, spaceAbove);
+                }
+            }
+        }
+
+
+
+        for (int i = 0; i < floor.getWidth(); i++) {
+            for (int j = 0; j < floor.getLength(); j++) {
+                if (floor.getSpace(i, j) != 0 || j - 1 < 0) continue;
+                if (floor.getSpace(i, j) == 12 || floor.getSpace(i, j) == 13 || floor.getSpace(i, j) == -1) continue;
+                int spaceLeft = floor.getSpace(i, j - 1);
+                if (spaceLeft >= -1 && spaceLeft <= 11) {
+                    floor.setSpace(i, j, spaceLeft);
+                }
+            }
+        }
+    }
+
+    private static void fillWithUnassigned(Floor floor) {
+        for (int i = 0; i < floor.getWidth(); i++) {
+            for (int j = 0; j < floor.getLength(); j++) {
+                if (floor.getSpace(i, j) == 0) {
+                    floor.setSpace(i, j, -11);
                 }
             }
         }

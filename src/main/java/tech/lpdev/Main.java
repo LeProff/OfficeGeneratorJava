@@ -1,7 +1,7 @@
 package tech.lpdev;
 
 import lombok.Getter;
-import org.apache.poi.xwpf.usermodel.*;
+//import org.apache.poi.xwpf.usermodel.*;
 import org.jfree.svg.SVGGraphics2D;
 import org.jfree.svg.SVGUtils;
 import tech.lpdev.components.Building;
@@ -12,9 +12,7 @@ import tech.lpdev.utils.FileUtils;
 import tech.lpdev.utils.Logger;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +28,7 @@ public class Main {
 
     private static List<String> checked;
     private static List<int[][]> rooms;
+    private static int closetCount = 1;
 
     public static void main(String[] args) throws IOException {
 
@@ -50,6 +49,7 @@ public class Main {
         for (int i = 0; i < count; i++) {
             generateCompany();
             Logger.info("Generated company " + (i + 1));
+            System.out.println(currentCompany.toString() + "\n");
         }
         Logger.success("Finished generating " + count + " companies");
     }
@@ -70,6 +70,7 @@ public class Main {
         for (int i = 0; i < floors.size(); i++) {
             checked = new ArrayList<>();
             rooms = new ArrayList<>();
+            closetCount = 1;
 
             svg = new SVGGraphics2D(floors.get(i).getLength() * multiplier * 1.5, floors.get(i).getWidth() * multiplier * 1.5);
 
@@ -87,88 +88,28 @@ public class Main {
     }
 
     public static void generateDocument() throws IOException {
-        XWPFDocument document = new XWPFDocument();
+        File file = new File(FileUtils.getJarPath() + "/companies/" + currentCompany.getName() + "/company.txt");
+        FileWriter writer = new FileWriter(file);
+        writer.write("Name: " + currentCompany.getName());
+        writer.write("\nDescription: " + currentCompany.getDescription());
+        writer.write("\nAge: " + currentCompany.getAge());
+        writer.write("\nTotal Employees: " + currentCompany.getTotalEmployees());
 
-        XWPFParagraph p = document.createParagraph();
-        XWPFRun r = null;
+        writer.write("\nFloors: " + currentCompany.getBuilding().getFloorCount());
 
-        r = p.createRun();
-        // 73A0DD as rgb string
-        r.setColor("73A0DD");
-        r.setFontSize(26);
-        r.setBold(true);
-        r.setText(currentCompany.getName());
-        r.addBreak();
-        r.addBreak();
+        writer.write("\nExecutives: " + currentCompany.getExecutives());
+        writer.write("\nHR: " + currentCompany.getHr());
+        writer.write("\nFinance: " + currentCompany.getFinance());
+        writer.write("\nPurchasing: " + currentCompany.getPurchasing());
+        writer.write("\nSales and Marketing: " + currentCompany.getSalesAndMarketing());
+        writer.write("\nSecurity: " + currentCompany.getSecurity());
+        writer.write("\nCommunications: " + currentCompany.getCommunications());
+        writer.write("\nLegal: " + currentCompany.getLegal());
+        writer.write("\nIT: " + currentCompany.getIt());
+        writer.write("\n" + currentCompany.getSpecialtyOneName() + ": " + currentCompany.getSpecialtyOne());
+        writer.write("\n" + currentCompany.getSpecialtyTwoName() + ": " + currentCompany.getSpecialtyTwo());
 
-        r = p.createRun();
-        r.setColor("73A0DD");
-        r.setFontSize(18);
-        r.setBold(true);
-        r.setText("Description");
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("A " + currentCompany.getAge() + "-year-old firm that " + currentCompany.getDescription() + ".");
-        r.addBreak();
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("Business has been good over the last few years, so the head office for ");
-        r = p.createRun();
-        r.setBold(true);
-        r.setText(currentCompany.getName());
-        r = p.createRun();
-        r.setText(" has been adding staff to handle the new business. A few months ago, they realized that they have now outgrown their current offices and are now planning a move into a new suburban office building. They will occupy" + currentCompany.getBuilding().getFloorCount() + "floors of the new building as they now have a need for " + currentCompany.getTotalEmployees() + "offices for the various members of the following departments:");
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Executives: " + currentCompany.getExecutives());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Human Resources: " + currentCompany.getHr());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Finance: " + currentCompany.getFinance());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Purchasing: " + currentCompany.getPurchasing());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Sales and Marketing: " + currentCompany.getSalesAndMarketing());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Security: " + currentCompany.getSecurity());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Communications: " + currentCompany.getCommunications());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• Legal: " + currentCompany.getLegal());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• IT: " + currentCompany.getIt());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• " + currentCompany.getSpecialtyOneName() + ": " + currentCompany.getSpecialtyOne());
-        r.addBreak();
-
-        r = p.createRun();
-        r.setText("\t• " + currentCompany.getSpecialtyTwoName() + ": " + currentCompany.getSpecialtyTwo());
-        r.addBreak();
-
-        FileOutputStream out = new FileOutputStream(FileUtils.getJarPath() + "/companies/" + currentCompany.getName() + "/company.docx");
-        document.write(out);
-        out.close();
+        writer.close();
     }
 
     public static void drawFloor(Floor floor) {
@@ -180,34 +121,11 @@ public class Main {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 int type = floor.getSpace(i, j);
-                if (type == 12) {
-                    svg.setColor(Color.BLUE);
+                if (type == -3) {
+                    svg.setColor(Color.LIGHT_GRAY);
                     svg.fillRect(j * multiplier, i * multiplier, multiplier, multiplier);
                     svg.setColor(Color.WHITE);
                 }
-                if (type == 13) {
-                    svg.setColor(Color.RED);
-                    svg.fillRect(j * multiplier, i * multiplier, multiplier, multiplier);
-                    svg.setColor(Color.WHITE);
-                }
-                if (type == -1) {
-                    svg.setColor(Color.GREEN);
-                    svg.fillRect(j * multiplier, i * multiplier, multiplier, multiplier);
-                    svg.setColor(Color.WHITE);
-                }
-                // purple for -11
-                if (type == -11) {
-                    svg.setColor(Color.MAGENTA);
-                    svg.fillRect(j * multiplier, i * multiplier, multiplier, multiplier);
-                    svg.setColor(Color.WHITE);
-                }
-                // orange walkway
-                if (type == -2) {
-                    svg.setColor(Color.ORANGE);
-                    svg.fillRect(j * multiplier, i * multiplier, multiplier, multiplier);
-                    svg.setColor(Color.WHITE);
-                }
-
                 //right | top
                 if (i + 1 >= width || floor.getSpace(i + 1, j) != type) {
                     if (!(i + 1 >= width && floor.getSpace(i, j) == -10)) {
@@ -216,7 +134,7 @@ public class Main {
                         svg.setColor(Color.WHITE);
                     }
                 }
-                //left | bot
+                //left | bottom
                 if (i - 1 < 0 || floor.getSpace(i - 1, j) != type) {
                     if (!(i - 1 < 0 && floor.getSpace(i, j) == -10)) {
                         svg.setColor(Color.BLACK);
@@ -224,7 +142,7 @@ public class Main {
                         svg.setColor(Color.WHITE);
                     }
                 }
-//                // down
+                // down
                 if (j + 1 >= height || floor.getSpace(i, j + 1) != type) {
                     if (!(j + 1 >= height && floor.getSpace(i, j) == -10)) {
                         svg.setColor(Color.BLACK);
@@ -232,7 +150,7 @@ public class Main {
                         svg.setColor(Color.WHITE);
                     }
                 }
-////                // up
+                // up
                 if (j - 1 < 0 || floor.getSpace(i, j - 1) != type) {
                     if (!(j - 1 < 0 && floor.getSpace(i, j) == -10)) {
                         svg.setColor(Color.BLACK);
@@ -285,6 +203,7 @@ public class Main {
     public static void drawDoors(Floor floor, int[][] room) {
 
         List<Wall> walls = getWalls(room);
+        boolean hasDoor = false;
 
         svg.setColor(Color.CYAN);
         for (Wall wall : walls) {
@@ -292,6 +211,8 @@ public class Main {
             int p1Y = wall.getP1().getY();
             int p2X = wall.getP2().getX();
             int p2Y = wall.getP2().getY();
+
+            if (hasDoor) break;
 
             if (wall.isVertical()) {
                 // check if the line top walkway
@@ -310,14 +231,22 @@ public class Main {
                         svg.setColor(Color.BLACK);
                         svg.drawLine(center * multiplier, p1X * multiplier, center * multiplier, (p2X + 2) * multiplier);
                         svg.drawArc((center - 2) * multiplier, (p2X - 2) * multiplier, 4 * multiplier,  4 * multiplier, 270, 90);
-
+                        if (floor.getSpace(p1X, p1Y) == 12 || floor.getSpace(p1X, p1Y) == 13) hasDoor = true;
                     } else if (floor.getSpace(p1X + 1, p1Y) == -2 && floor.getSpace(p2X + 1, p2Y) == -2) {
                         int center = (p1Y + p2Y) / 2;
+
+                        boolean pass = false;
+                        for (int i = p1Y; i <= p2Y; i++) {
+                            if (floor.getSpace(p1X, i) != floor.getSpace(p1X, p1Y)) pass = true;
+                        }
+                        if (pass) continue;
+
                         svg.setColor(Color.WHITE);
                         svg.drawLine(center * multiplier, (p1X + 1) * multiplier, (center + 2) * multiplier, (p2X + 1) * multiplier);
                         svg.setColor(Color.BLACK);
                         svg.drawLine(center * multiplier, (p1X + 1) * multiplier, center * multiplier, (p2X - 1) * multiplier);
                         svg.drawArc((center - 2) * multiplier, (p2X - 1) * multiplier, 4 * multiplier,  4 * multiplier, 360, 90);
+                        if (floor.getSpace(p1X, p1Y) == 12 || floor.getSpace(p1X, p1Y) == 13) hasDoor = true;
                     }
                     continue;
                 } catch (ArrayIndexOutOfBoundsException e) {}
@@ -328,24 +257,39 @@ public class Main {
                     int center = (p1X + p2X) / 2;
 
 //                    if (floor.getSpace(center, p1Y) != floor.getSpace(p1X, p1Y)) continue;
-                    boolean pass = false;
+                    boolean skip = false;
                     for (int i = p1X; i <= p2X; i++) {
-                        if (floor.getSpace(i, p1Y) != floor.getSpace(p1X, p1Y)) pass = true;
+                        if (floor.getSpace(i, p1Y) != floor.getSpace(p1X, p1Y)) {
+                            skip = true;
+                            break;
+                        }
                     }
-                    if (pass) continue;
+                    if (skip) continue;
 
                     svg.setColor(Color.WHITE);
                     svg.drawLine(p1Y * multiplier, center * multiplier, p2Y * multiplier, (center + 2) * multiplier);
                     svg.setColor(Color.BLACK);
                     svg.drawLine(p1Y * multiplier, center * multiplier, (p2Y + 2) * multiplier, center * multiplier);
                     svg.drawArc((p2Y - 2) * multiplier, (center - 2) * multiplier, 4 * multiplier,  4 * multiplier, 270, 90);
+                    if (floor.getSpace(p1X, p1Y) == 12 || floor.getSpace(p1X, p1Y) == 13) hasDoor = true;
                 } else if (floor.getSpace(p1X, p1Y + 1) == -2 && floor.getSpace(p2X, p2Y + 1) == -2) {
                     int center = (p1X + p2X) / 2;
+
+                    boolean skip = false;
+                    for (int i = p1X; i <= p2X; i++) {
+                        if (floor.getSpace(i, p1Y) != floor.getSpace(p1X, p1Y)) {
+                            skip = true;
+                            break;
+                        }
+                    }
+                    if (skip) continue;
+
                     svg.setColor(Color.WHITE);
                     svg.drawLine((p1Y + 1) * multiplier, center * multiplier, (p2Y + 1) * multiplier, (center + 2) * multiplier);
                     svg.setColor(Color.BLACK);
                     svg.drawLine((p1Y + 1) * multiplier, center * multiplier, (p2Y - 1) * multiplier, center * multiplier);
                     svg.drawArc((p2Y - 1) * multiplier, (center - 2) * multiplier, 4 * multiplier,  4 * multiplier, 180, 90);
+                    if (floor.getSpace(p1X, p1Y) == 12 || floor.getSpace(p1X, p1Y) == 13) hasDoor = true;
                 }
             } catch (ArrayIndexOutOfBoundsException e) {}
         }
@@ -435,22 +379,35 @@ public class Main {
 
         String label = "";
         switch (type) {
+            case -11 -> label = "Empty";
             case -1 -> label = "Meeting Room";
             case 2 -> label = "HR (" + count / 80 + ")";
             case 3 -> label = "Finance (" + count / 80 + ")";
             case 4 -> label = "Purchasing (" + count / 80 + ")";
             case 5 -> label = "Sales (" + count / 80 + ")";
             case 6 -> label = "Security (" + count / 80 + ")";
-            case 7 -> label = "Communications (" + count / 80 + ")";
+            case 7 -> label = "Comms (" + count / 80 + ")";
             case 8 -> label = "Legal (" + count / 80 + ")";
             case 9 -> label = "IT (" + count / 80 + ")";
             case 10 -> label = currentCompany.getSpecialtyOneName() + " (" + count / 80 + ")";
             case 11 -> label = currentCompany.getSpecialtyTwoName() + " (" + count / 80 + ")";
-            case 12 -> label = "Bathroom";
+            case 12 -> label = "Washroom";
+            case 13 -> {
+                label = "CL" + closetCount;
+                closetCount++;
+            }
         }
 
-        svg.setColor(Color.BLACK);
-        svg.drawString(label, (point.getY() + 1) * multiplier, (point.getX() + 3) * multiplier);
+        String[] split = label.replaceAll(" \\(", "(").split(" ");
+        if (point != null) {
+            svg.setColor(Color.BLACK);
+            for (int i = 0; i < split.length; i++) {
+                svg.drawString(split[i].replaceAll("\\(", " ("), (point.getY() + 1) * multiplier, (point.getX() + 3 + i) * multiplier);
+            }
+//            svg.setColor(Color.BLACK);
+//            svg.drawString(label, (point.getY() + 1) * multiplier, (point.getX() + 3) * multiplier);
+        }
+
     }
 
     @Getter

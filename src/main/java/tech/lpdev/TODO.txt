@@ -71,10 +71,26 @@ CONFIG
 ###############################################################################
 
 produce workable output
-working doors
-working labels [dept_name + (num_people_in_room)] (people per room) (boardrooms dont need number of people) || DONE
-Word docx in folder DONE
-Get rid of a colours
-try to remove orphaned rooms (add doors if need-be)
+DONE -> working doors
+DONE -> working labels [dept_name + (num_people_in_room)] (people per room) (boardrooms don't need number of people)
+DONE -> Word docx in folder
+DONE -> Get rid of a colours
+DONE* -> try to remove orphaned rooms (add doors if need-be)
 * add symbols for bathrooms and access points
 * add open space rooms (un-used room type)
+
+To Discuss:
+- some storage rooms are too small and doors won't fit/generate
+- the word docs lib is causing errors, come up with solutions (possibly output txt file and he can parse it)
+- certain labels are way too long
+
+make a txt file out separate with %
+
+###############################################################################
+
+DONE -> text file output for company data (use company #toString)
+- attempt to fix top floors
+
+- email system for making envelopes
+
+* fix filling to make more square rooms

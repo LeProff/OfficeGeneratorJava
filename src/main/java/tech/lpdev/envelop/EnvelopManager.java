@@ -2,16 +2,20 @@ package tech.lpdev.envelop;
 
 import tech.lpdev.utils.FileUtils;
 import tech.lpdev.utils.Logger;
+import tech.lpdev.utils.MathUtil;
 
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnvelopManager {
 
+    private static File dir = null;
 
     public static Envelope getRandomEnvelop() throws IOException {
-        File dir = FileUtils.getFileFromResource("envelopes");
+        if (dir == null) dir = FileUtils.getFileFromResource("envelopes");
 
 //        EnvelopManager envelopManager = new EnvelopManager();
 //        File dir = null;
@@ -22,8 +26,15 @@ public class EnvelopManager {
 //        }
 //        assert dir != null;
 
-        File[] envelopes = dir.listFiles();
-        File[] randomEnvelope = envelopes[(int) (Math.random() * envelopes.length)].listFiles();
+        File[] temp = dir.listFiles();
+
+        List<File> envelopes = new ArrayList<>();
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i].isDirectory()) {
+                envelopes.add(temp[i]);
+            }
+        }
+        File[] randomEnvelope = envelopes.get(MathUtil.random(0, envelopes.size() - 1)).listFiles();
 
         int[][] inner = getEnvelopFromFile(randomEnvelope[1]);
         int[][] outer = getEnvelopFromFile(randomEnvelope[0]);
