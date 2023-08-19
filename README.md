@@ -26,7 +26,7 @@ vary the layout of corridors so that the building floors can show some variety.
 
 The structure of the ``inner.txt`` and ``outer.txt`` files is as follows:
 * Line 1: Width of building
-* Line 2: Height of building
+* Line 2: Length of building
 * All following lines: Details of the building layout (design), using a simple
 numeric code to describe the usage of each building **tile** (a 1 square foot
 section of the building):
