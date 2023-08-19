@@ -63,10 +63,10 @@ Also inside the ``resources`` folder is the file ``config.yml``, which defines
 key details of the floor definitions.  
 
 The following parameters can be defined and configured:
-* peoplePerOffice: - takes an integer value which defines how many people sit in a given 8x10 cubicle area (hint: use 1)
+* peoplePerOffice: Takes an integer value which defines how many people sit in a given 8x10 cubicle area (hint: use 1)
 * overflowMin: - No idea 
-* meetingRoomsPerFloor: - defines how many conference/meeting rooms will be added to a each floor (note that this is a maximum number, so it is possible that any number from 0 to the maximum defined here will be added) (hint: use 2)
-* executiveOfficesClustered: - this boolean value changes the behaviour of the room allocation; when True it will cluster executive offices on one floor, but when False will place executives adjacent their respective departments
+* meetingRoomsPerFloor: Defines how many conference/meeting rooms will be added to a each floor (note that this is a maximum number, so it is possible that any number from 0 to the maximum defined here will be added) (hint: use 2)
+* executiveOfficesClustered: This boolean value changes the behaviour of the room allocation; when True it will cluster executive offices on one floor, but when False will place executives adjacent their respective departments
 * are there more?
 * I don't know
 
@@ -82,10 +82,10 @@ executiveOfficesClustered: False
 ```
 
 ## How to Generate Floorplans
-In the directory containing the `OfficeGenerator-**versionnumber**.jar` file, 
+In the directory containing the `OfficeGenerator-versionnumber.jar` file, 
 run the generator as follows:
 ```
-java -jar OfficeGenerator-**versionnumber**.jar **numbertogenerate**
+java -jar OfficeGenerator-versionnumber.jar numbertogenerate
 ```
 Example:
 ```
